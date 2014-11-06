@@ -1,215 +1,628 @@
-
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
+<!--[if lt IE 8 ]><html class="no-js ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="no-js ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 8)|!(IE)]><!--><html class="no-js" lang="en"> <!--<![endif]-->
+<head>
 
-    <title>Web programmer - Ryan O'Mullan</title>
+   <!--- Basic Page Needs
+   ================================================== -->
+   <meta charset="utf-8">
+	<title>Ryan O'Mullan</title>
+	<meta name="description" content="">
+	<meta name="author" content="">
 
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/font-awesome.css" rel="stylesheet">
+   <!-- Mobile Specific Metas
+   ================================================== -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-
-    <!-- Just for debugging purposes. Don't actually copy this line! -->
-    <!--[if lt IE 9]><script src="../../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->
-
-    <!-- Custom styles for this template -->
-    <link href="sstyle.css" rel="stylesheet">
-    
-    <!-- Google Analytics -->
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-        ga('create', 'UA-47302992-1', 'omullan.com');
-        ga('send', 'pageview');
-    </script>
-    
-  </head>
-<!-- NAVBAR
-================================================== -->
-  <body>
-    <div class="navbar-wrapper">
-      <div class="container">
-
-        <div class="navbar navbar-inverse navbar-static-top" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <a class="navbar-brand" href="index.html">Ryan O'Mullan</a>
-            </div>
-            <div class="navbar-collapse collapse">
-              <ul class="nav navbar-nav">
-                <li class="active"><a href="index.html">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="https://github.com/RyanOM">Projects</a></li>
-              </ul>
-              <ul class="nav navbar-nav navbar-right social-header">
-                <li><a href="https://www.linkedin.com/in/ryanomullan/en" target="_blank">
-                    <i class="fa fa-linkedin"></i>
-                </a></li>
-                <li><a href="https://github.com/RyanOM" target="_blank";>
-                    <i class="fa fa-github"></i>
-                </a></li>
-                <li><a href="mailto:omullan.ryan+personal-website@gmail.com";>
-                    <i class="fa fa-envelope-o"></i>
-                </a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-
-    <!-- Carousel
+	<!-- CSS
     ================================================== -->
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-      <!-- Indicators -->
-      <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
-      </ol>
-      <div class="carousel-inner">
-        <div class="item active">
-          <img src="img/htmltyper.jpg" alt="First slide">
-        </div>
-        <div class="item">
-          <img img src="img/keyboard.jpg" alt="Second slide">
-        </div>
-        <div class="item">
-          <img data-src="holder.js/900x500/auto/#555:#5a5a5a/text:Mail" alt="Third slide">
-          <div class="container">
-            <div class="carousel-caption">
-              <i class="fa fa-envelope-o" style="font-size: 100px"></i>
-              <h1> Send me an email !!!</h1>
-              <p>Please feel free to contact me and I'll gladly answer you back.</p>
-              <p><a class="btn btn-lg btn-primary" href="mailto:omullan.ryan+personal-website@gmail.com" role="button">Send a message</a></p>
-            </div>
-          </div>
-        </div>
+   <link rel="stylesheet" href="css/default.css">
+	<link rel="stylesheet" href="css/layout.css">
+   <link rel="stylesheet" href="css/media-queries.css">
+   <link rel="stylesheet" href="css/magnific-popup.css">
+
+   <!-- Script
+   ================================================== -->
+	<script src="js/modernizr.js"></script>
+
+   <!-- Favicons
+	================================================== -->
+	<link rel="shortcut icon" href="favicon.png" >
+
+</head>
+
+<body>
+
+   <!-- Header
+   ================================================== -->
+   <header id="home">
+
+      <nav id="nav-wrap">
+
+         <a class="mobile-btn" href="#nav-wrap" title="Show navigation">Show navigation</a>
+	      <a class="mobile-btn" href="#" title="Hide navigation">Hide navigation</a>
+
+         <ul id="nav" class="nav">
+            <li class="current"><a class="smoothscroll" href="#home">Home</a></li>
+            <li><a class="smoothscroll" href="#about">About</a></li>
+	        <li><a class="smoothscroll" href="#resume">Resume</a></li>
+            <li><a class="smoothscroll" href="#portfolio">My Work</a></li>
+            <!-- <li><a class="smoothscroll" href="#testimonials">Testimonials</a></li>-->
+            <li><a class="smoothscroll" href="#contact">Contact</a></li>
+            <!--<li><a href="blog.html">Blog</a></li>-->
+
+         </ul> <!-- end #nav -->
+
+      </nav> <!-- end #nav-wrap -->
+
+      <div class="row banner">
+         <div class="banner-text">
+            <h1 class="responsive-headline">Ryan O'Mullan</h1>
+            <h3>Language Lover <span>&bull;</span> Python Programmer <span>&bull;</span> Business Developer</h3>
+            <hr />
+            <ul class="social">
+               <li><a href="https://twitter.com/ryanomullan" target="_blank"><i class="fa fa-twitter"></i></a></li>
+               <li><a href="https://www.linkedin.com/in/ryanomullan/en" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+               <li><a href="mailto:omullan.ryan+personal-website@gmail.com"><i class="fa fa-envelope-o"></i></a></li>
+               <li><a href="skype:ryanomullan?call"><i class="fa fa-skype"></i></a></li>
+               <li><a href="https://github.com/RyanOM" target="_blank"><i class="fa fa-github"></i></a></li>
+            </ul>
+         </div>
       </div>
-      <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
-      <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
-    </div><!-- /.carousel -->
+
+      <p class="scrolldown">
+         <a class="smoothscroll" href="#about"><i class="icon-down-circle"></i></a>
+      </p>
+
+   </header> <!-- Header End -->
 
 
+   <!-- About Section
+   ================================================== -->
+   <section id="about">
 
-    <!-- Marketing messaging and featurettes
-    ================================================== -->
-    <!-- Wrap the rest of the page in another container to center all the content. -->
-
-    <div class="container marketing">
-
-      <!-- Three columns of text below the carousel -->
       <div class="row">
-        <div class="col-lg-4">
-          <i class="fa fa-code" style="font-size:140px"></i>
-          <h2>Front-End Development</h2>
-          <p>As a front-end developer, I am well versed in HTML5, CSS3 and Javascript. I leverage these technologies to build compelling web-applications.</p>
-        </div><!-- /.col-lg-4 -->
-        <div class="col-lg-4">
-          <i class="fa fa-bar-chart-o" style="font-size:140px;"></i>
-          <h2>A Business Perspective</h2>
-          <p>Having professional business experience, allows me to both a dual business/engineering perspective on my projects.</p>
-        </div><!-- /.col-lg-4 -->
-        <div class="col-lg-4">
-          <i class="fa fa-code-fork" style="font-size:140px"></i>
-          <h2>Projects</h2>
-          <p>Coming soon! In the meanwhile check out my opensource projects on Github.</p>
-          <p><a class="btn btn-default" href="https://github.com/RyanOM" role="button" target="_blank">See more &raquo;</a></p>
-        </div><!-- /.col-lg-4 -->
-      </div><!-- /.row -->
 
+         <div class="three columns">
 
-      <!-- START THE FEATURETTES -->
+            <img class="profile-pic"  src="images/mypic.jpg" alt="" />
 
-      <hr class="featurette-divider">
+         </div>
 
-      <div class="row featurette">
-        <div class="col-md-7">
-          <h2 id="about"class="featurette-heading">About me: <span class="text-muted">A young and curious web developer.</span></h2>
-          <p class="lead">I have always been interested in the web and how it is built. It is fascinating how it evolves so quickly and the influence it has on our daily lives. Coming from a business background and with basic understanding of programming, I decided to complement my career and become a web developer.</p>
-        </div>
-        <div class="col-md-5">
-          <img class="featurette-image img-responsive triforce" src="img/web-triforce.png" alt="Generic placeholder image">
-        </div>
+         <div class="nine columns main-col">
+
+            <h2>About Me</h2>
+
+            <p>I am a 24 year old language enthusiast. Since I moved from Ireland to France, I have always been learning more ways to communicate with people. Having lived and worked in 4 countries, I speak native English and French and I am currently assimilating Portuguese. As someone who enjoys sharing international experiences, I also teach English.<br>
+
+I am very passionate about technology and curious about how things work. 
+I'm constantly looking for new things to learn, but unfortunately there are only 24 hours in a day.
+            
+            </p>
+
+            <div class="row">
+
+               <div class="columns download">
+                  <p>
+                     <a href="/files/(EN)CV%20RyanOMullan%2010_14.pdf" target="_blank" class="button"><i class="fa fa-download"></i>Download Resume</a>
+                  </p>
+               </div>
+
+            </div> <!-- end row -->
+
+         </div> <!-- end .main-col -->
+
       </div>
 
-      <hr class="featurette-divider">
+   </section> <!-- About Section End-->
 
-      <div class="row featurette">
-        <div class="col-md-5">
-          <img class="featurette-image img-responsive" src="img/globe.png" alt="Generic placeholder image">
-        </div>
-        <div class="col-md-7">
-          <h2 class="featurette-heading">International experience: <br><span class="text-muted">Think Big!</span></h2>
-          <p class="lead">As someone who has lived in 4 different countries, I have met many interesting people from a wide range of professional areas. Not only does this help to create fresh ideas, it also allows me to be able to see things from a different angle and have an international mindset.</p>
-        <div class="wrapcountries">
-               <ul class="lead countries">
-                  <li>Ireland</li>
-                  <li>France</li>
-                  <li>Germany</li>
-                  <li>Brazil</li>
-              </ul>
-        </div>
-        </div>
+
+   <!-- Resume Section
+   ================================================== -->
+   <section id="resume">
+
+      <!-- Education
+      ----------------------------------------------- -->
+      <div class="row education">
+
+         <div class="three columns header-col">
+            <h1><span>Education</span></h1>
+         </div>
+
+         <div class="nine columns main-col">
+
+            <div class="row item">
+
+               <div class="twelve columns">
+
+                  <h3>Université Toulouse III</h3>
+                  <p class="info">Bachelor in Business and Marketing <span>&bull;</span> <em class="date">September 2012</em></p>
+
+                  <p>
+                  During my studies, I learnt about different skills in general business and marketing.
+                  This helped me to open my eyes and see projects from a different perspective.
+                  </p>
+
+               </div>
+
+            </div> <!-- item end -->
+
+            <div class="row item">
+
+               <div class="twelve columns">
+
+                  <h3>Université de Limoges</h3>
+                  <p class="info">Electronics and Computer Science Degree <span>&bull;</span> <em class="date">June 2011</em></p>
+
+                  <p>
+                  I got a solid understanding of machines, programming large industrial machines to tiny microcontrollers.
+                  </p>
+
+               </div>
+
+            </div> <!-- item end -->
+
+         </div> <!-- main-col end -->
+
+      </div> <!-- End Education -->
+
+
+      <!-- Work
+      ----------------------------------------------- -->
+      <div class="row work">
+
+         <div class="three columns header-col">
+            <h1><span>Work</span></h1>
+         </div>
+
+         <div class="nine columns main-col">
+
+            <div class="row item">
+
+               <div class="twelve columns">
+
+                  <h3>ryan.omullan.com</h3>
+                  <p class="info">Web Developer<span>&bull;</span> <em class="date">December 2012 - Present</em></p>
+
+                  <p>
+                  Building modern websites with responsive technology and Django.
+                  </p>
+
+               </div>
+
+            </div> <!-- item end -->
+            
+            <div class="row item">
+
+               <div class="twelve columns">
+
+                  <h3>BovControl</h3>
+                  <p class="info">Evangelist <span>&bull;</span> <em class="date">March 2014</em></p>
+
+                  <p>
+                  Product, Sales and Marketing development.
+                  </p>
+
+               </div>
+
+            </div> <!-- item end -->
+            
+            <div class="row item">
+
+               <div class="twelve columns">
+
+                  <h3>nal von minden GmbH</h3>
+                  <p class="info">International Account Manager <span>&bull;</span> <em class="date">April 2012 - October 2013</em></p>
+
+                  <p>
+                  Responsible for the French international market, selling medical equipment to international distributors. 
+                  </p>
+
+               </div>
+
+            </div> <!-- item end -->
+
+         </div> <!-- main-col end -->
+
+      </div> <!-- End Work -->
+
+
+      <!-- Skills
+      ----------------------------------------------- -->
+      <div class="row skill">
+
+         <div class="three columns header-col">
+            <h1><span>Skills</span></h1>
+         </div>
+
+         <div class="nine columns main-col">
+
+            <p>Due to my previous work experiences, I have aquired a diverse set of skills in business and programming.
+            </p>
+
+				<div class="bars">
+
+				   <ul class="skills">
+					   <li><span class="bar-expand python"></span><em>Python</em></li>
+                  <li><span class="bar-expand javascript"></span><em>Javascript</em></li>
+						<li><span class="bar-expand html5"></span><em>HTML5</em></li>
+						<li><span class="bar-expand css"></span><em>CSS</em></li>
+						<li><span class="bar-expand accountmanagement"></span><em>Account Management</em></li>
+                  <li><span class="bar-expand internationalrelations"></span><em>International Relations</em></li>
+					</ul>
+
+				</div><!-- end skill-bars -->
+
+			</div> <!-- main-col end -->
+
+      </div> <!-- End skills -->
+
+   </section> <!-- Resume Section End-->
+
+
+   <!-- Portfolio Section
+   ================================================== -->
+   <section id="portfolio">
+
+      <div class="row">
+
+         <div class="twelve columns collapsed">
+
+            <h1>Check Out Some of My Work.</h1>
+
+            <!-- portfolio-wrapper -->
+            <div id="portfolio-wrapper" class="bgrid-quarters s-bgrid-thirds cf">
+
+          	   <div class="columns portfolio-item">
+                  <div class="item-wrap">
+
+                     <a href="#modal-01" title="">
+                        <img alt="" src="images/portfolio/drc.JPG">
+                        <div class="overlay">
+                           <div class="portfolio-item-meta">
+          					      <h5>Clinic Dr Cabral</h5>
+                              <p>Web Development</p>
+          					   </div>
+                        </div>
+                        <div class="link-icon"><i class="icon-plus"></i></div>
+                     </a>
+
+                  </div>
+          		</div> <!-- item end -->
+
+               <div class="columns portfolio-item">
+                  <div class="item-wrap">
+
+                     <a href="#modal-02" title="">
+                        <img alt="" src="images/portfolio/ouricred.png">
+                        <div class="overlay">
+                           <div class="portfolio-item-meta">
+          					      <h5>Ouricred</h5>
+                              <p>Web Development</p>
+          					   </div>
+                        </div>
+                        <div class="link-icon"><i class="icon-plus"></i></div>
+                     </a>
+
+                  </div>
+          		</div> <!-- item end -->
+
+               <div class="columns portfolio-item">
+                  <div class="item-wrap">
+
+                     <a href="#modal-03" title="">
+                        <img alt="" src="images/portfolio/pyterm.png">
+                        <div class="overlay">
+                           <div class="portfolio-item-meta">
+          					      <h5>Pong</h5>
+                              <p>Python Mini project</p>
+          					   </div>
+                        </div>
+                        <div class="link-icon"><i class="icon-plus"></i></div>
+                     </a>
+
+                  </div>
+          		</div> <!-- item end -->
+
+               <div class="columns portfolio-item">
+                  <div class="item-wrap">
+
+                     <a href="#modal-04" title="">
+                        <img alt="" src="images/portfolio/pyterm.png">
+                        <div class="overlay">
+                           <div class="portfolio-item-meta">
+          					      <h5>BlackJack</h5>
+                              <p>Python Mini project</p>
+          					   </div>
+                        </div>
+                        <div class="link-icon"><i class="icon-plus"></i></div>
+                     </a>
+
+                  </div>
+          		</div> <!-- item end -->
+
+            </div> <!-- portfolio-wrapper end -->
+
+         </div> <!-- twelve columns end -->
+
+
+         <!-- Modal Popup
+	      --------------------------------------------------------------- -->
+
+         <div id="modal-01" class="popup-modal mfp-hide">
+
+		      <img class="scale-with-grid" src="images/clinica.png" alt="" />
+
+		      <div class="description-box">
+			      <h4>Clinic Dr Cabral</h4>
+			      <p>Responsive website built with Bootstrap. Some basic SEO by adding the clinic on sites such as Facebook, Google and Foursquare.</p>
+               <span class="categories"><i class="fa fa-tag"></i>Bootstrap, SEO, Social Media</span>
+		      </div>
+
+            <div class="link-box">
+               <a href="http://drcabralplastica.com/" target="_blank">Website</a>
+		         <a class="popup-modal-dismiss">Close</a>
+            </div>
+
+	      </div><!-- modal-01 End -->
+
+         <div id="modal-02" class="popup-modal mfp-hide">
+
+		      <img class="scale-with-grid" src="images/portfolio/ourisite.png" alt="" />
+
+		      <div class="description-box">
+			      <h4>Ouricred</h4>
+			      <p>Website built with the python framework Django and bootstrap. Content can be managed dynamicaly through the admin interface.</p>
+               <span class="categories"><i class="fa fa-tag"></i>Django, Bootstrap, Email marketing</span>
+		      </div>
+
+            <div class="link-box">
+               <a href="http://www.ouricred.com.br" target="_blank">Website</a>
+		         <a class="popup-modal-dismiss">Close</a>
+            </div>
+
+	      </div><!-- modal-02 End -->
+
+         <div id="modal-03" class="popup-modal mfp-hide">
+
+		      <img class="scale-with-grid" src="images/portfolio/pong.png" alt="" />
+
+		      <div class="description-box">
+			      <h4>Pong</h4>
+			      <p>Created the classic Pong game for a python course at Rice University. The code is hosted on CodeSkulptor and can be run in Chrome and Firefox.</p>
+               <span class="categories"><i class="fa fa-tag"></i>Mini-Project, Python</span>
+		      </div>
+
+            <div class="link-box">
+               <a href="http://www.codeskulptor.org/#user38_gkHHoOWN5v_8.py" target="_blank">View Project</a>
+		         <a class="popup-modal-dismiss">Close</a>
+            </div>
+
+	      </div><!-- modal-03 End -->
+
+         <div id="modal-04" class="popup-modal mfp-hide">
+
+		      <img class="scale-with-grid" src="images/portfolio/blackjack.png" alt="" />
+
+		      <div class="description-box">
+			      <h4>BlackJack</h4>
+			      <p>Basic BlackJack game created during a course at Rice University. The code is hosted on CodeSkulptor and can be run in Chrome and Firefox.</p>
+               <span class="categories"><i class="fa fa-tag"></i>Mini-Project, Python</span>
+		      </div>
+
+            <div class="link-box">
+               <a href="http://www.codeskulptor.org/#user38_LEyzXcdG6w_27.py">View Project</a>
+		         <a class="popup-modal-dismiss">Close</a>
+            </div>
+
+	      </div><!-- modal-04 End -->
+
+      </div> <!-- row End -->
+
+   </section> <!-- Portfolio Section End-->
+
+
+   <!-- strip
+   ==================================================
+   <section id="call-to-action">
+
+      <div class="row">
+
+         <div class="two columns header-col">
+
+            <h1><span>Some extra blabla</span></h1>
+
+         </div>
+
+         <div class="seven columns">
+
+            <h2><a href="">Some mini title</a></h2>
+            <p>some really good text</p>
+
+         </div>
+
+         <div class="three columns action">
+
+            <a href="" class="button">Contact</a>
+
+         </div>
+
       </div>
 
-      <hr class="featurette-divider">
+   </section> <!-- strip -->
 
-      <div class="row featurette">
-        <div class="col-md-7">
-          <h2 id="contact" class="featurette-heading">A strategic thinker: <span class="text-muted">Always up for a challenge.</span></h2>
-          <p class="lead">I love to learn new things and challenge myself. If you believe that I can help you with a project, please feel free to <a href="mailto:omullan.ryan+personal-website@gmail.com">contact me.</a></p>
-        </div>
-        <div class="col-md-5">
-          <img class="featurette-image img-responsive" src="img/chess.png" alt="Generic placeholder image">
-        </div>
+
+   <!-- Testimonials Section
+   ================================================== -->
+   <section id="testimonials">
+
+      <div class="text-container">
+
+         <div class="row">
+
+            <div class="two columns header-col">
+
+              <!-- <h1><span>Client Testimonials</span></h1>-->
+
+            </div>
+
+            <div class="ten columns flex-container">
+
+               <div class="flexslider">
+
+                  <ul class="slides">
+
+                     <li>
+                        <blockquote>
+                           <p>To learn a language is to have one more window from which to look at the world.
+                           </p>
+                           <cite> Chinese proverb</cite>
+                        </blockquote>
+                     </li> <!-- slide ends -->
+
+ <!-- disable slider                    <li>
+                        <blockquote>
+                           <p>This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet.
+                           Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem
+                           nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris.
+                           </p>
+                           <cite>Mr. Adobe</cite>
+                        </blockquote>
+                     </li> <!-- slide ends -->
+
+                  </ul>
+
+               </div> <!-- div.flexslider ends -->
+
+            </div> <!-- div.flex-container ends -->
+
+         </div> <!-- row ends -->
+
+       </div>  <!-- text-container ends -->
+
+   </section> <!-- Testimonials Section End-->
+
+
+   <!-- Contact Section
+   ================================================== -->
+   <section id="contact">
+
+         <div class="row section-head">
+
+            <div class="two columns header-col">
+
+               <h1><span>Get In Touch.</span></h1>
+
+            </div>
+
+            <div class="five columns">
+
+                  <p class="lead">I am a person who is up for a challenge. If you have a project proposal, please feel free to contact me:
+                  </p>
+                  
+                  <p>
+                    <a href="mailto:omullan.ryan+personal-website@gmail.com">Send me an email</a><br>
+                    or<br>
+                    <a href="https://www.linkedin.com/in/ryanomullan/en" target="_blank">Let's connect on Linkedin</a>
+                </p>
+
+            </div>
+
+
+
+            <aside class="four columns footer-widgets">
+
+               <div class="widget widget_contact">
+
+					   <h4>Current Location</h4>
+					   <!-- Using snazzymaps-->
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASm3CwaK9qtcZEWYa-iQwHaGi3gcosAJc&sensor=false"></script>
+        
+<!-- 
+            You need to include this script on any page that has a Google Map.
+            When using Google Maps on your own site you MUST signup for your own API key at:
+                https://developers.google.com/maps/documentation/javascript/tutorial#api_key
+            After your sign up replace the key in the URL below or paste in the new script tag that Google provides.
+        -->
+        
+        <script type="text/javascript">
+            // When the window has finished loading create our google map below
+            google.maps.event.addDomListener(window, 'load', init);
+        
+            function init() {
+                // Basic options for a simple Google Map
+                // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
+                var mapOptions = {
+                    // How zoomed in you want the map to start at (always required)
+                    zoom: 12,
+
+                    // The latitude and longitude to center the map (always required)
+                    center: new google.maps.LatLng(-23.554700, -46.633751), // SaoPaulo
+
+                    // How you would like to style the map. 
+                    // This is where you would paste any style found on Snazzy Maps.
+                    styles: [{featureType:"landscape",stylers:[{saturation:-100},{lightness:65},{visibility:"on"}]},{featureType:"poi",stylers:[{saturation:-100},{lightness:51},{visibility:"simplified"}]},{featureType:"road.highway",stylers:[{saturation:-100},{visibility:"simplified"}]},{featureType:"road.arterial",stylers:[{saturation:-100},{lightness:30},{visibility:"on"}]},{featureType:"road.local",stylers:[{saturation:-100},{lightness:40},{visibility:"on"}]},{featureType:"transit",stylers:[{saturation:-100},{visibility:"simplified"}]},{featureType:"administrative.province",stylers:[{visibility:"off"}]/**/},{featureType:"administrative.locality",stylers:[{visibility:"on"}]},{featureType:"administrative.neighborhood",stylers:[{visibility:"on"}]/**/},{featureType:"water",elementType:"labels",stylers:[{visibility:"on"},{lightness:-25},{saturation:-100}]},{featureType:"water",elementType:"geometry",stylers:[{hue:"#ffff00"},{lightness:-25},{saturation:-97}]}]
+                };
+
+                // Get the HTML DOM element that will contain your map 
+                // We are using a div with id="map" seen below in the <body>
+                var mapElement = document.getElementById('map');
+
+                // Create the Google Map using out element and options defined above
+                var map = new google.maps.Map(mapElement, mapOptions);
+            }
+        </script>
+					   <div id="map" style="width: 300px; height: 250px; margin-bottom: 10px"></div>
+				   </div>
+
+            </aside>
+
       </div>
 
-      <hr class="featurette-divider">
-
-      <!-- /END THE FEATURETTES -->
+   </section> <!-- Contact Section End-->
 
 
-      <!-- FOOTER -->
-      <footer>
-        <p class="pull-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2014 Ryan O'Mullan</p>
-      </footer>
+   <!-- footer
+   ================================================== -->
+   <footer>
 
-    </div><!-- /.container -->
+      <div class="row">
 
+         <div class="twelve columns">
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/holder.js"></script>
+            <ul class="social-links">
+               <li><a href="https://twitter.com/ryanomullan" target="_blank"><i class="fa fa-twitter"></i></a></li>
+               <li><a href="https://www.linkedin.com/in/ryanomullan/en" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+               <li><a href="mailto:omullan.ryan+personal-website@gmail.com"><i class="fa fa-envelope-o"></i></a></li>
+               <li><a href="skype:ryanomullan?call"><i class="fa fa-skype"></i></a></li>
+               <li><a href="https://github.com/RyanOM" target="_blank"><i class="fa fa-github"></i></a></li>
+            </ul>
 
-  </body>
+            <ul class="copyright">
+               <li>&copy; Copyright 2014 Ryan O'Mullan</li>
+            </ul>
+
+         </div>
+
+         <div id="go-top"><a class="smoothscroll" title="Back to Top" href="#home"><i class="icon-up-open"></i></a></div>
+
+      </div>
+
+   </footer> <!-- Footer End-->
+
+   <!-- Java Script
+   ================================================== -->
+   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+   <script>window.jQuery || document.write('<script src="js/jquery-1.10.2.min.js"><\/script>')</script>
+   <script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
+
+   <script src="js/jquery.flexslider.js"></script>
+   <script src="js/waypoints.js"></script>
+   <script src="js/jquery.fittext.js"></script>
+   <script src="js/magnific-popup.js"></script>
+   <script src="js/init.js"></script>
+
+</body>
+
 </html>
