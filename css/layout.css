@@ -306,32 +306,32 @@ ul#nav li.current a { color: #F06000; }
 }
 
 .python {
-  	width: 65%;
+  	width: 100%;
   	-moz-animation: python 2s ease;
   	-webkit-animation: python 2s ease;
 }
 .javascript {
-  	width: 55%;
+  	width: 100%;
   	-moz-animation: javascript 2s ease;
   	-webkit-animation: javascript 2s ease;
 }
 .html5 {
-  	width: 80%;
+  	width: 100%;
   	-moz-animation: html5 2s ease;
   	-webkit-animation: html5 2s ease;
 }
 .css {
-  	width: 75%;
+  	width: 100%;
   	-moz-animation: css 2s ease;
   	-webkit-animation: css 2s ease;
 }
 .accountmanagement {
-  	width: 70%;
+  	width: 100%;
   	-moz-animation: accountmanagement 2s ease;
   	-webkit-animation: accountmanagement 2s ease;
 }
 .internationalrelations {
-  	width: 80%;
+  	width: 100%;
   	-moz-animation: internationalrelations 2s ease;
   	-webkit-animation: internationalrelations 2s ease;
 }
