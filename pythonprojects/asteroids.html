@@ -22,9 +22,9 @@ embedSkulptor(options,(function () {/*
 ################################
 # PASTE YOUR PYTHON CODE BELOW #
 ################################
-# implementation of Spaceship - program template for RiceRocks
+# Implementation of Asteroids in Python
 #
-# Please use Google Chrome. Sound may not be avaliable on Firefox and other browsers
+# Please use Google Chrome. Sound may not be available on Firefox and other browsers
 #
 # Controls
 # left and right arrow keys to rotate
@@ -34,7 +34,7 @@ embedSkulptor(options,(function () {/*
 #
 # Have fun =)
 #
-#http://www.codeskulptor.org/#user38_ygFa6LSRap_16.py
+# http://www.codeskulptor.org/#user38_ygFa6LSRap_16.py
 
 
 import simplegui
@@ -50,8 +50,9 @@ time = 0
 started = False
 expl_time = 0
 
+
 class ImageInfo:
-    def __init__(self, center, size, radius = 0, lifespan = None, animated = False):
+    def __init__(self, center, size, radius=0, lifespan=None, animated=False):
         self.center = center
         self.size = size
         self.radius = radius
@@ -78,48 +79,54 @@ class ImageInfo:
 
     
 # art assets created by Kim Lathrop, may be freely re-used in non-commercial projects, please credit Kim
+
+# Base resource urls
+IMG_RESOURCE_URL = "https://raw.githubusercontent.com/RyanOM/python_asteroids/gh-pages/imgs/{}"
+SOUND_RESOURCE_URL = "https://raw.githubusercontent.com/RyanOM/python_asteroids/gh-pages/sounds/{}"
     
 # debris images - debris1_brown.png, debris2_brown.png, debris3_brown.png, debris4_brown.png
 #                 debris1_blue.png, debris2_blue.png, debris3_blue.png, debris4_blue.png, debris_blend.png
 debris_info = ImageInfo([320, 240], [640, 480])
-debris_image = simplegui.load_image("http://commondatastorage.googleapis.com/codeskulptor-assets/lathrop/debris2_blue.png")
+debris_image = simplegui.load_image(IMG_RESOURCE_URL.format("debris2_blue.png"))
 
 # nebula images - nebula_brown.png, nebula_blue.png
 nebula_info = ImageInfo([400, 300], [800, 600])
-nebula_image = simplegui.load_image("http://commondatastorage.googleapis.com/codeskulptor-assets/lathrop/nebula_blue.f2014.png")
+nebula_image = simplegui.load_image(IMG_RESOURCE_URL.format("nebula_blue.f2014.png"))
 
 # splash image
 splash_info = ImageInfo([200, 150], [400, 300])
-splash_image = simplegui.load_image("http://commondatastorage.googleapis.com/codeskulptor-assets/lathrop/splash.png")
+splash_image = simplegui.load_image(IMG_RESOURCE_URL.format("splash.png"))
 
 # ship image
 ship_info = ImageInfo([45, 45], [90, 90], 35)
-ship_image = simplegui.load_image("http://commondatastorage.googleapis.com/codeskulptor-assets/lathrop/double_ship.png")
+ship_image = simplegui.load_image(IMG_RESOURCE_URL.format("double_ship.png"))
 
 # missile image - shot1.png, shot2.png, shot3.png
 missile_info = ImageInfo([5,5], [10, 10], 3, 50)
-missile_image = simplegui.load_image("http://commondatastorage.googleapis.com/codeskulptor-assets/lathrop/shot2.png")
+missile_image = simplegui.load_image(IMG_RESOURCE_URL.format("shot2.png"))
 
 # asteroid images - asteroid_blue.png, asteroid_brown.png, asteroid_blend.png
 asteroid_info = ImageInfo([45, 45], [90, 90], 40)
-asteroid_image = simplegui.load_image("http://commondatastorage.googleapis.com/codeskulptor-assets/lathrop/asteroid_blue.png")
+asteroid_image = simplegui.load_image(IMG_RESOURCE_URL.format("asteroid_blue.png"))
 
 # animated explosion - explosion_orange.png, explosion_blue.png, explosion_blue2.png, explosion_alpha.png
 explosion_info = ImageInfo([64, 64], [128, 128], 17, 24, True)
-explosion_image = simplegui.load_image("http://commondatastorage.googleapis.com/codeskulptor-assets/lathrop/explosion_alpha.png")
+explosion_image = simplegui.load_image(IMG_RESOURCE_URL.format("explosion_alpha.png"))
 
 # sound assets purchased from sounddogs.com, please do not redistribute
 # .ogg versions of sounds are also available, just replace .mp3 by .ogg
-soundtrack = simplegui.load_sound("http://commondatastorage.googleapis.com/codeskulptor-assets/sounddogs/soundtrack.mp3")
-missile_sound = simplegui.load_sound("http://commondatastorage.googleapis.com/codeskulptor-assets/sounddogs/missile.mp3")
+soundtrack = simplegui.load_sound(SOUND_RESOURCE_URL.format("soundtrack.mp3"))
+missile_sound = simplegui.load_sound(SOUND_RESOURCE_URL.format("missile.mp3"))
 missile_sound.set_volume(.5)
-ship_thrust_sound = simplegui.load_sound("http://commondatastorage.googleapis.com/codeskulptor-assets/sounddogs/thrust.mp3")
-explosion_sound = simplegui.load_sound("http://commondatastorage.googleapis.com/codeskulptor-assets/sounddogs/explosion.mp3")
-scream_sound = simplegui.load_sound("https://dl.dropbox.com/s/1oqh5rsf6n6swio/void_scream.mp3")
+ship_thrust_sound = simplegui.load_sound(SOUND_RESOURCE_URL.format("thrust.mp3"))
+explosion_sound = simplegui.load_sound(SOUND_RESOURCE_URL.format("explosion.mp3"))
+scream_sound = simplegui.load_sound("https://github.com/RyanOM/python_asteroids/blob/gh-pages/sounds/void_scream.mp3?raw=true")
+
 
 # helper functions to handle transformations
 def angle_to_vector(ang):
     return [math.cos(ang), math.sin(ang)]
+
 
 def dist(p, q):
     return math.sqrt((p[0] - q[0]) ** 2 + (p[1] - q[1]) ** 2)
@@ -139,14 +146,13 @@ class Ship:
         self.image_size = info.get_size()
         self.radius = info.get_radius()
         
-    def draw(self,canvas):
+    def draw(self, canvas):
         if self.thrust:
-            canvas.draw_image(self.image, [self.image_center[0] + self.image_size[0], self.image_center[1]] , self.image_size,
-                              self.pos, self.image_size, self.angle)
+            canvas.draw_image(self.image, [self.image_center[0] + self.image_size[0], self.image_center[1]],
+                              self.image_size, self.pos, self.image_size, self.angle)
         else:
             canvas.draw_image(self.image, self.image_center, self.image_size,
                               self.pos, self.image_size, self.angle)
-        # canvas.draw_circle(self.pos, self.radius, 1, "White", "White")
 
     def update(self):
         # update angle
@@ -190,9 +196,9 @@ class Ship:
     
 # Sprite class
 class Sprite:
-    def __init__(self, pos, vel, ang, ang_vel, image, info, sound = None):
-        self.pos = [pos[0],pos[1]]
-        self.vel = [vel[0],vel[1]]
+    def __init__(self, pos, vel, ang, ang_vel, image, info, sound=None):
+        self.pos = [pos[0], pos[1]]
+        self.vel = [vel[0], vel[1]]
         self.angle = ang
         self.angle_vel = ang_vel
         self.image = image
@@ -214,8 +220,7 @@ class Sprite:
                                            self.image_center[1]], self.image_size, self.pos, self.image_size)
             expl_time += 1
         else:
-            canvas.draw_image(self.image, self.image_center, self.image_size,
-                          self.pos, self.image_size, self.angle)
+            canvas.draw_image(self.image, self.image_center, self.image_size, self.pos, self.image_size, self.angle)
 
     def update(self):
         # update angle
@@ -225,14 +230,13 @@ class Sprite:
         self.pos[0] = (self.pos[0] + self.vel[0]) % WIDTH
         self.pos[1] = (self.pos[1] + self.vel[1]) % HEIGHT
         
-        #lifespan
+        # lifespan
         self.age += 1
         if self.age >= self.lifespan:
             return True
         else:
             return False
-        
-        
+
     def collide(self, other_object):
         if self.radius + other_object.radius > dist(self.pos, other_object.pos):
             return True
@@ -251,6 +255,7 @@ def keydown(key):
     elif key == simplegui.KEY_MAP['space']:
         my_ship.shoot()
         
+
 def keyup(key):
     if key == simplegui.KEY_MAP['left']:
         my_ship.increment_angle_vel()
@@ -259,7 +264,8 @@ def keyup(key):
     elif key == simplegui.KEY_MAP['up']:
         my_ship.set_thrust(False)
         
-# mouseclick handlers that reset UI and conditions whether splash image is drawn
+
+# mouse click handlers that reset UI and conditions whether splash image is drawn
 def click(pos):
     global started
     center = [WIDTH / 2, HEIGHT / 2]
@@ -270,15 +276,17 @@ def click(pos):
         started = True
         reset()
 
+
 def draw(canvas):
     global time, started, lives, score, soundtrack
     
-    # animiate background
+    # animate background
     time += 1
     wtime = (time / 4) % WIDTH
     center = debris_info.get_center()
     size = debris_info.get_size()
-    canvas.draw_image(nebula_image, nebula_info.get_center(), nebula_info.get_size(), [WIDTH / 2, HEIGHT / 2], [WIDTH, HEIGHT])
+    canvas.draw_image(nebula_image, nebula_info.get_center(), nebula_info.get_size(), [WIDTH / 2, HEIGHT / 2],
+                      [WIDTH, HEIGHT])
     canvas.draw_image(debris_image, center, size, (wtime - WIDTH / 2, HEIGHT / 2), (WIDTH, HEIGHT))
     canvas.draw_image(debris_image, center, size, (wtime + WIDTH / 2, HEIGHT / 2), (WIDTH, HEIGHT))
 
@@ -287,7 +295,7 @@ def draw(canvas):
         soundtrack.pause()
         scream_sound.play()
         
-    if started == True:
+    if started:
         # draw ship and sprites
         my_ship.draw(canvas)
         process_sprite_group(rock_group, canvas)
@@ -309,19 +317,25 @@ def draw(canvas):
                           splash_info.get_size(), [WIDTH / 2, HEIGHT / 2], 
                           splash_info.get_size())
         
-    #remove life for collisions    
+    # remove life for collisions
     if group_collide(rock_group, my_ship):
         lives -= 1
         
-    #missile/rock collisions score
+    # missile/rock collisions score
     score += 10*group_group_collide(missile_group, rock_group)
 
-# timer handler that spawns a rock    
+
+# timer handler that spawns a rock
 def rock_spawner():
     global rock_group, my_ship, score
     rock_pos = [random.randrange(0, WIDTH), random.randrange(0, HEIGHT)]
     speedup = score//80
-    rock_vel = [float(random.randrange(1, 5+speedup))/10*random.choice([-1,1]), float(random.randrange(1, 5+speedup))/10*random.choice([-1,1])]
+    # Rock velocity
+    rock_vel = [
+        float(random.randrange(1, 5+speedup))/10*random.choice([-1, 1]),
+        float(random.randrange(1, 5+speedup))/10*random.choice([-1, 1]),
+    ]
+    # Rock angle velocity
     rock_avel = random.random() * .2 - .1
     a_rock = Sprite(rock_pos, rock_vel, 0, rock_avel, asteroid_image, asteroid_info)
     if len(rock_group) < 12:
@@ -329,16 +343,17 @@ def rock_spawner():
         if dist(a_rock.pos, my_ship.pos) > a_rock.radius + my_ship.radius + 15:
             rock_group.add(a_rock)
 
-#Drawing sprites in set
+
+# Drawing sprites in set
 def process_sprite_group(myset, mycanvas): 
     iterate = myset.copy()
     for sprite in iterate:
         sprite.draw(mycanvas)
         sprite.update()
-        if sprite.update() == True:
+        if sprite.update():
             myset.remove(sprite)
 
-#group_collide
+
 def group_collide(group, other_object):
     iterate = group.copy()
     for sprite in iterate:
@@ -348,18 +363,19 @@ def group_collide(group, other_object):
             sprite.animated = True
             return True
         
-#group_group_collide
+
 def group_group_collide(mgroup, rgroup):
     hits = 0
     iterate = mgroup.copy()
     for missile in iterate:
-        if group_collide(rgroup, missile) == True:
+        if group_collide(rgroup, missile):
             hits += 1
             mgroup.remove(missile)
     return hits
 
+
 def reset():
-    global lives, rock_group, my_ship, missile_group, score, soundtrack
+    global explosion_group, lives, rock_group, my_ship, missile_group, score, soundtrack
     lives = 3
     my_ship = Ship([WIDTH / 2, HEIGHT / 2], [0, 0], 0, ship_image, ship_info)
     rock_group = set([])
@@ -368,6 +384,7 @@ def reset():
     score = 0
     soundtrack.rewind()
     soundtrack.play()
+
 
 # initialize stuff
 frame = simplegui.create_frame("Asteroids", WIDTH, HEIGHT)
@@ -384,23 +401,19 @@ frame.set_keyup_handler(keyup)
 frame.set_keydown_handler(keydown)
 frame.set_mouseclick_handler(click)
 frame.set_draw_handler(draw)
-label = frame.add_label('### Controls ###')
-label = frame.add_label('')
-label = frame.add_label('Left and right arrow keys to move')
-label = frame.add_label('Forward key to thrust')
-label = frame.add_label('Spacebar to fire')
-label = frame.add_label('')
-label = frame.add_label('Please use Google Chrome. Sound may not be avaliable on Firefox and other browsers')
+frame.add_label('### Controls ###')
+frame.add_label('')
+frame.add_label('Left and right arrow keys to move')
+frame.add_label('Forward key to thrust')
+frame.add_label('Spacebar to fire')
+frame.add_label('')
+frame.add_label('Please use Google Chrome. Sound may not be available on Firefox and other browsers')
 
 timer = simplegui.create_timer(1000.0, rock_spawner)
 
 # get things rolling
 timer.start()
 frame.start()
-
-
-
-# END
 
 ################################
 # PASTE YOUR PYTHON CODE ABOVE #
